@@ -81,7 +81,7 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
       return res.status(502).setHeader('Content-Type', 'text/html; charset=utf-8').send(html);
     }
 
-    const cazicCallback = 'http://localhost:24114/soundcloud';
+    const cazicCallback = 'http://127.0.0.1:24114/soundcloud';
     const payload = JSON.stringify({ state, token: JSON.parse(text) });
 
     const bootstrap = JSON.stringify({ url: cazicCallback, payload });
