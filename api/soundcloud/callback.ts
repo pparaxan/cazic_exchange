@@ -84,12 +84,17 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
     const cazicCallback = 'http://localhost:24114/soundcloud';
     const payload = JSON.stringify({ state, token: JSON.parse(text) });
 
+    const bootstrap = JSON.stringify({ url: cazicCallback, payload });
+
     const tpl = await readPage('success.html');
     const html = tpl
-      .replace('__CAZIC_CALLBACK_URL__', JSON.stringify(cazicCallback))
-      .replace('__PAYLOAD__', JSON.stringify(payload));
+      .replace('__CAZIC_BOOTSTRAP__', bootstrap);
 
-    res.status(200).setHeader('Content-Type', 'text/html; charset=utf-8').send(html);
+    res
+      .status(200)
+      .setHeader('Content-Type', 'text/html; charset=utf-8')
+      .setHeader('Cache-Control', 'no-store')
+      .send(html);
   } catch (err) {
     console.error('[CazicExchange] /api/soundcloud/callback error:', err);
     try {

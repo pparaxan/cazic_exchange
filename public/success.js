@@ -1,7 +1,18 @@
 (async function () {
   try {
-    const url = window.__CAZIC_CALLBACK_URL__;
-    const payload = window.__CAZIC_PAYLOAD__;
+    const bootEl = document.getElementById('bootstrap');
+    let url;
+    let payload;
+
+    if (bootEl && bootEl.textContent) {
+      try {
+        const boot = JSON.parse(bootEl.textContent);
+        url = boot && typeof boot.url === 'string' ? boot.url : undefined;
+        payload = boot && typeof boot.payload === 'string' ? boot.payload : undefined;
+      } catch (e) {
+        // handled below.
+      }
+    }
 
     const statusEl = document.getElementById('status');
     const log = (msg) => {
