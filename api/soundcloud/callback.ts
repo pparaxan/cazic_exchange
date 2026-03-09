@@ -14,10 +14,6 @@ function escapeHtml(s: string): string {
     .replaceAll("'", '&#39;');
 }
 
-function escapeJsString(s: string): string {
-  return s.replaceAll('\\', '\\\\').replaceAll('"', '\\"');
-}
-
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {
     const clientId = requireEnv('SOUNDCLOUD_CLIENT_ID');
@@ -90,8 +86,8 @@ export default async function handler(req: VercelRequest, res: VercelResponse) {
 
     const tpl = await readPage('success.html');
     const html = tpl
-      .replace('__CAZIC_CALLBACK_URL__', escapeJsString(cazicCallback))
-      .replace('__PAYLOAD__', escapeJsString(payload));
+      .replace('__CAZIC_CALLBACK_URL__', JSON.stringify(cazicCallback))
+      .replace('__PAYLOAD__', JSON.stringify(payload));
 
     res.status(200).setHeader('Content-Type', 'text/html; charset=utf-8').send(html);
   } catch (err) {
