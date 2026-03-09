@@ -1,0 +1,17 @@
+{
+  "name": "cazic_exchange",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "build": "bunx tsc -p tsconfig.json --noEmit"
+  },
+  "devDependencies": {
+    "@types/bun": "latest"
+  },
+  "peerDependencies": {
+    "typescript": "^5"
+  },
+  "dependencies": {
+    "vercel": "^50.28.0"
+  }
+}

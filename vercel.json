@@ -1,0 +1,7 @@
+{
+  "rewrites": [
+    { "source": "/soundcloud/start", "destination": "/api/soundcloud/start" },
+    { "source": "/soundcloud/callback", "destination": "/api/soundcloud/callback" },
+    { "source": "/soundcloud/exchange", "destination": "/api/soundcloud/exchange" }
+  ]
+}

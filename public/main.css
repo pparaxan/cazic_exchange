@@ -1,0 +1,62 @@
+html,
+body {
+	height: 100%;
+	margin: 0;
+	font-family: Arial, sans-serif;
+	color: white;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.bg {
+	position: fixed;
+	inset: 0;
+	z-index: -1;
+}
+
+.bg svg {
+	width: 100%;
+	height: 100%;
+}
+
+section {
+	background: #232136;
+	padding: 30px 40px;
+	border-radius: 16px;
+	text-align: center;
+	width: fit-content;
+}
+
+pre {
+  margin: 24px auto;
+  max-width: 900px;
+  text-align: left;
+  padding: 16px;
+  border-radius: 10px;
+  background: rgba(255, 255, 255, 0.06);
+  overflow: auto;
+}
+
+.logo {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 0;
+        margin-bottom: 20px;
+      }
+
+      .logo img {
+        width: 48px;
+        height: 48px;
+        display: block;
+      }
+
+      .logo-text {
+        font-family: 'Autour One', serif;
+        font-weight: 700;
+        font-size: 2.8rem;
+        color: white;
+        line-height: 1;
+        letter-spacing: -0.5px;
+      }
