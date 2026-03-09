@@ -1,6 +1,6 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-import { requireEnv } from '../../src/env';
+import { requireEnv } from '../../src/env.js';
 
 interface TokenRequestBody {
   code: string;

@@ -1,8 +1,8 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-import { hmacSha256Base64Url, randomBase64Url, sha256Base64Url } from '../../src/crypto';
-import { setCookie } from '../../src/cookies';
-import { requireEnv } from '../../src/env';
+import { hmacSha256Base64Url, randomBase64Url, sha256Base64Url } from '../../src/crypto.js';
+import { setCookie } from '../../src/cookies.js';
+import { requireEnv } from '../../src/env.js';
 
 export default async function handler(req: VercelRequest, res: VercelResponse) {
   try {

@@ -1,9 +1,9 @@
 import type { VercelRequest, VercelResponse } from '@vercel/node';
 
-import { clearCookie, getCookie } from '../../src/cookies';
-import { hmacSha256Base64Url } from '../../src/crypto';
-import { requireEnv } from '../../src/env';
-import { readPage } from '../../src/html';
+import { clearCookie, getCookie } from '../../src/cookies.js';
+import { hmacSha256Base64Url } from '../../src/crypto.js';
+import { requireEnv } from '../../src/env.js';
+import { readPage } from '../../src/html.js';
 
 function escapeHtml(s: string): string {
   return s
