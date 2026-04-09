@@ -36,12 +36,21 @@
       const blob = new Blob([payload], { type: 'text/plain' });
       const ok = navigator.sendBeacon(url, blob);
       log(`sendBeacon called; returned: ${String(ok)}`);
+      if (!ok) {
+        log('The browser blocked the request. If you have an adblocker or any sort of privacy extension, disable them for this page and retry.');
+      }
       return;
     }
 
     log('sendBeacon not available; falling back to fetch(no-cors).');
-    await fetch(url, { method: 'POST', mode: 'no-cors', body: payload });
-    log('fetch(no-cors) completed (response is opaque by design).');
+    try {
+      await fetch(url, { method: 'POST', mode: 'no-cors', body: payload });
+      log('fetch(no-cors) completed (response is opaque by design).');
+    } catch (e) {
+      log(`fetch failed: ${String(e)}`);
+      log('The browser blocked the request. If you have an adblocker or any sort of privacy extension, disable them for this page and retry.');
+      throw e;
+    }
   } catch (_e) {
     try {
       console.error('[CazicExchange success] Forwarding failed:', _e);
